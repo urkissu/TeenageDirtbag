@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaGoat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+ * {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: white;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+    background-image: url("hername.png");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    text-align: center;
+}
+
+
+/* navigate here (i liekk uuuuu) */
+
+header {
+    height: 65px;
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* homee (your heart my home) */
+
+.home {
+    min-height: calc(100vh - 65px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+.small {
+    margin: 0 0 15px;
+
+    font-size: 14px;
+}
+
+.home h1 {
+    margin: 0;
+
+    font-size: clamp(45px, 8vw, 80px);
+    line-height: 1.1;
+    font-weight: bold;
+}
+
+.home h1 i {
+    font-style: normal;
+}
+
+.intro {
+    margin-top: 25px;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* blue videos */
+
+.videos {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+    padding: 80px 0 120px;
+}
+
+.videos h2 {
+    margin: 0;
+
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.count {
+    margin: 5px 0 30px;
+
+    font-size: 13px;
+}
+
+
+/* personal youtube */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+
+    text-align: left;
+}
+
+.card {
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    border-radius: 12px;
+
+    color: #493b40;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.thumbnail {
+    position: relative;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: #e8cbd3;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.play {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.card-info {
+    padding: 16px;
+}
+
+.card-info .category {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-info h3 {
+    margin: 6px 0;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.card-info p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* websites */
+
+.websites {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+    padding: 60px 0 120px;
+}
+
+.websites h2 {
+    margin: 0;
+
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.website-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+
+    margin-top: 30px;
+
+    text-align: left;
+}
+
+.website-card {
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    border-radius: 12px;
+
+    color: #493b40;
+
+    transition: 0.2s;
+}
+
+.website-card:hover {
+    transform: translateY(-4px);
+}
+
+.website-card img {
+    width: 100%;
+    height: 230px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.website-info {
+    padding: 16px;
+}
+
+.website-info h3 {
+    margin: 6px 0;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.website-info p {
+    margin: 0 0 15px;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.website-info a {
+    color: #493b40;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.website-info a:hover {
+    text-decoration: underline;
+}
+
+
+/* your mini theatre */
+
+.popup {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    padding: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.popup.show {
+    display: flex;
+}
+
+.popup-box {
+    position: relative;
+
+    width: 900px;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    background: white;
+
+    border-radius: 12px;
+
+    color: #493b40;
+}
+
+#close {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    z-index: 2;
+
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+.video {
+    aspect-ratio: 16 / 9;
+
+    background: black;
+}
+
+.video iframe {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    border: 0;
+}
+
+.info {
+    padding: 20px;
+
+    text-align: left;
+}
+
+.info #category {
+    margin: 0;
+
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info h2 {
+    margin: 5px 0;
+
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.info #description {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* feet (lick lick) */
+
+.play-logo {
+    width: 180px;
+    height: 190px;
+    object-fit: contain;
+}
+
+footer {
+    padding: 50px 20px;
+
+    font-size: 12px;
+}
+
+
+/* fone */
+
+@media (max-width: 750px) {
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home h1 {
+        font-size: 48px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .videos h2,
+    .websites h2 {
+        font-size: 36px;
+    }
+
+    .website-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .home h1,
+    .videos h2,
+    .websites h2,
+    .card-info h3,
+    .website-info h3,
+    .info h2 {
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+    }
+
+}
+</style>
+<body>
+
+    <header>
+        <a href="#" class="logo">♡</a>
+
+        <nav>
+            <a href="#home">home(urdil)</a>
+            <a href="#videos">blue videos</a>
+            <a href="#websites">dhakdhak</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="home" id="home">
+
+            <h3> Helooo prettyy womannn :) </h3>
+
+            <h1>
+                myy khajana,<br>
+                take them all
+            </h1>
+
+            <p class="intro">
+                oye hoye sharma gyi kya <br>
+            </p>
+
+        </section>
+
+
+        <section class="videos" id="videos">
+
+            <h2>♡</h2>
+
+            <p class="count" id="video-count"></p>
+
+            <div class="video-grid" id="video-grid"></div>
+
+        </section>
+
+
+        <section class="websites" id="websites">
+
+            <h2>Keshab Dilchotta♡</h2>
+
+            <p class="count">For u Ravya Dilchotti♡</p>
+
+            <div class="website-grid" id="website-grid"></div>
+
+        </section>
+
+    </main>
+
+
+    <div class="popup" id="popup">
+
+        <div class="popup-box">
+
+            <button id="close">×</button>
+
+            <div class="video">
+                <iframe
+                    id="player"
+                    src=""
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="info">
+                <p id="category"></p>
+                <h2 id="title"></h2>
+                <p id="description"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <img src="play.png" class="play-logo" alt="">
+
+
+    <footer>
+        made for you ♡
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+<script>
+
+    const videos = [
+
+    {
+        id: "hVANfeux0EI",
+        title: "KIKI WALLAH♡",
+        description: "My fav student",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "PGhBHvs7ec4",
+        title: "I imagine we..",
+        description: "fell in dashh",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "vGFJGcrKiVs",
+        title: "nobody can match our freak",
+        description: "freaku",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "h6Gd6jz6KCY",
+        title: "Sundar sa phool",
+        description: "I dash u so",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "56RMrTaT2eY",
+        title: "Romantic classes",
+        description: "Let me be your amitesh",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "qTLusWicr4s",
+        title: "Tiny Space",
+        description: "i just wanna be yours ravya",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "MW3h9r7ul5A",
+        title: "Do you like jazz?",
+        description: "u had said u would store my potty",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "VdQCd_8_Lhc",
+        title: "Head massage",
+        description: "u had said u would store my potty again",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "AsXMmaRQ5lQ",
+        title: "Anything for u if u say so",
+        description: "just tum kahoooo",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "HkseUgJ8bhw",
+        title: "Hello my world",
+        description: "Jii maam mai mikrosoft se baat kr ra",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "37ec6u_ouoo",
+        title: "Watch this whenever i make u mad",
+        description: "I reallyy wanna see u da happiest",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "0Di3sqLDgT4",
+        title: "it definetly was a surprise",
+        description: "I like surprises and i liek u",
+        category: "MAHA EPISODE"
+    },
+
+    {
+        id: "xhrAiT0B5ro",
+        title: "Your coffee at your service medam",
+        description: "Sorry for the heartache though, ily.",
+        category: "MAHA EPISODE"
+    }
+
+];
+
+
+const websites = [
+
+  {
+                name: "Tiny Space",
+                description: "our place in space",
+                image: "starbg.png",
+                link: "https://urkissu.github.io/nasawallah/"
+            },
+
+            {
+                name: "IamSorry",
+                description: "Best mistake ever",
+                image: "heart.png",
+                link: "https://urkissu.github.io/acceptmeplz/"
+            }
+];
+
+
+const grid = document.getElementById("video-grid");
+const count = document.getElementById("video-count");
+
+const websiteGrid = document.getElementById("website-grid");
+
+const popup = document.getElementById("popup");
+const player = document.getElementById("player");
+
+const title = document.getElementById("title");
+const description = document.getElementById("description");
+const category = document.getElementById("category");
+
+const close = document.getElementById("close");
+
+
+count.textContent =
+    videos.length + (videos.length === 1 ? " video" : " videos");
+
+
+videos.forEach(function(video) {
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+        <div class="thumbnail">
+            <img
+                src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg"
+                alt="${video.title}"
+            >
+            <div class="play">▶</div>
+        </div>
+
+        <div class="card-info">
+            <div class="category">${video.category}</div>
+            <h3>${video.title}</h3>
+            <p>${video.description}</p>
+        </div>
+    `;
+
+    card.onclick = function() {
+        openVideo(video);
+    };
+
+    grid.appendChild(card);
+
+});
+
+
+websites.forEach(function(website) {
+
+    const card = document.createElement("div");
+
+    card.className = "website-card";
+
+    card.innerHTML = `
+        <img
+            src="${website.image}"
+            alt="${website.name}"
+        >
+
+        <div class="website-info">
+            <h3>${website.name}</h3>
+            <p>${website.description}</p>
+
+            <a
+                href="${website.link}"
+                target="_blank"
+                rel="noopener noreferrer">
+                visit website →
+            </a>
+        </div>
+    `;
+
+    websiteGrid.appendChild(card);
+
+});
+
+
+function openVideo(video) {
+
+    title.textContent = video.title;
+    description.textContent = video.description;
+    category.textContent = video.category;
+
+    player.src =
+        "https://www.youtube.com/embed/" +
+        video.id +
+        "?autoplay=1";
+
+    popup.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeVideo() {
+
+    popup.classList.remove("show");
+
+    player.src = "";
+
+    document.body.style.overflow = "";
+}
+
+
+close.onclick = closeVideo;
+
+
+popup.onclick = function(event) {
+
+    if (event.target === popup) {
+        closeVideo();
+    }
+
+};
+
+
+document.onkeydown = function(event) {
+
+    if (event.key === "Escape") {
+        closeVideo();
+    }
+
+};
+
+</script>
+</html>
